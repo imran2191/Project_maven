@@ -1,31 +1,19 @@
 pipeline {
     agent any
-
     stages {
-        stage ('Compile Stage') {
-
+        stage('---clean---') {
             steps {
-                withMaven(maven : 'maven_3_5_4') {
-                    sh 'mvn clean compile'
-                }
+                sh "mvn clean"
             }
         }
-
-        stage ('Testing Stage') {
-
+        stage('--test--') {
             steps {
-                withMaven(maven : 'maven_3_5_4') {
-                    sh 'mvn test'
-                }
+                sh "mvn test"
             }
         }
-
-
-        stage ('Deployment Stage') {
+        stage('--package--') {
             steps {
-                withMaven(maven : 'maven_3_5_4') {
-                    sh 'mvn deploy'
-                }
+                sh "mvn package"
             }
         }
     }
