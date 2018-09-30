@@ -1,17 +1,12 @@
 pipeline {
     agent any
     stages {
-        stage('---clean---') {
+        stage('---SCM checkout---') {
             steps {
-                sh "mvn clean"
+                sh "git clone 'https://github.com/imran2191/Project_maven.git'"
             }
         }
         stage('--test--') {
-            steps {
-                sh "mvn test"
-            }
-        }
-        stage('--package--') {
             steps {
                 sh "mvn package"
             }
