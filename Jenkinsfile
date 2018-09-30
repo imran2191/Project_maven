@@ -6,7 +6,7 @@ pipeline {
                 sh "git clone 'https://github.com/imran2191/Project_maven.git'"
             }
         }
-        stage('--test--') {
+        stage('--maven Build--') {
             steps {
                 sh "mvn package"
             }
